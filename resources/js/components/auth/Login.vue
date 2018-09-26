@@ -50,7 +50,7 @@
                         this.$router.push({path: '/'});
                     })
                     .catch((error) => {
-                        this.$store.commit("loginFailed", {error});
+                        this.$store.commit("loginFailed", error);
                     });
             }
         },

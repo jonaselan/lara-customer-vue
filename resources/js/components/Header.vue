@@ -24,9 +24,9 @@
                               {{ currentUser.name }} <span class="caret"></span>
                           </a>
 
-                          <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a href="#!" @click.prevent="logout" class="dropdown-item">Logout</a>
-                          </div> -->
+                          </div>
                       </li>
                   </template>
               </ul>
@@ -41,6 +41,12 @@
         computed: {
           currentUser(){
             return this.$store.getters.currentUser
+          }
+        },
+        methods: {
+          logout(){
+            this.$store.commit('logout');
+            this.$router.push({path: '/login'});
           }
         }
     }

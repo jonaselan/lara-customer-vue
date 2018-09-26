@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 import { routes } from './routes';
 import MainApp from './components/MainApp.vue';
 import storeData from './store';
+import { initialize } from './helpers/general';
 
 // dizer ao vue o que ele vai usar
 Vue.use(VueRouter);
@@ -18,20 +19,7 @@ const router = new VueRouter({
   mode: 'history'
 });
 
-// to: rota que o usuário está pedindo
-// from: rota que vinhemos
-// next: callback que usamos para pararmos
-router.beforeEach((to, from, next) => {
-  const requiredAuth = to.matched.some(record => record.meta.requiredAuth);
-  const currentUser = store.state.currentUser;
-
-  if (requiredAuth && !currentUser) {
-    next('/login');
-  }
-  else{
-    next('/')
-  }
-});
+initialize(store, router);
 
 const app = new Vue({
     el: '#app',

@@ -6,7 +6,7 @@ export default {
     currentUser: user,
     isLoggedIn: !!user,
     loading: false,
-    AuthError: null,
+    authError: null,
     customers: []
   },
   getters: {
@@ -29,20 +29,20 @@ export default {
   mutations: {
     login(state) {
       state.loading = true;
-      state.auth_error = null;
+      state.authError = null;
     },
     loginSuccess(state, payload) {
-      state.auth_error = null;
+      state.authError = null;
       state.isLoggedIn = true;
       state.loading = false;
-      // unir os dois valores em um 
+      // unir os dois valores em um
       state.currentUser = Object.assign({}, payload.user, {token: payload.access_token});
 
       localStorage.setItem("user", JSON.stringify(state.currentUser));
     },
     loginFailed(state, payload) {
       state.loading = false;
-      state.auth_error = payload.error;
+      state.authError = payload;
     },
     logout(state) {
       localStorage.removeItem("user");

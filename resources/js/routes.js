@@ -4,9 +4,9 @@ import Login from './components/auth/Login.vue';
 
 export const routes = [
   {
-    path: '/login',
+    path: '/',
     component: Home,
-    meta: { requiredAuth: true },
+    meta: { requiresAuth: true },
   },
   {
     path: '/login',
