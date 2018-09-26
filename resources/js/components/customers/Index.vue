@@ -35,17 +35,17 @@
     export default {
         name: 'index',
         mounted() {
-            if (this.customers.length) {
-                return;
-            }
+          if (this.customers.length) {
+              return;
+          }
 
-            this.$store.dispatch('getCustomers');
+          this.$store.dispatch('getCustomers');
         },
         computed: {
             customers() {
                 return this.$store.getters.customers;
             }
-        }
+        },
     }
 </script>
 

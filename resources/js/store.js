@@ -53,10 +53,23 @@ export default {
       state.isLoggedIn = false;
       state.currentUser = null;
     },
+    fillCustomerState(state, customers){
+      state.customers = customers;
+    }
   },
   actions: {
     login(context) {
       context.commit("login");
     },
+    getCustomers(context) {
+      axios.get('api/customers', {
+            headers: {
+              "Authorization": `Bearer ${context.state.currentUser.token}`
+            }
+          })
+           .then((response) => {
+              context.commit('fillCustomerState', response.data.customers);
+           });
+    }
   }
 };

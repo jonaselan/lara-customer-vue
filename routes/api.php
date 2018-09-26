@@ -19,3 +19,9 @@ Route::group(['prefix' => 'auth'], function ($router) {
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 });
+
+Route::group(['middleware' => 'jwt.auth', 'prefix' => 'customers'], function ($router) {
+    Route::get('', 'CustomersController@index');
+    Route::post('', 'CustomersController@store');
+    Route::get('{id}', 'CustomersController@show');
+});
