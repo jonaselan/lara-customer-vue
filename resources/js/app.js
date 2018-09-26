@@ -18,6 +18,21 @@ const router = new VueRouter({
   mode: 'history'
 });
 
+// to: rota que o usuário está pedindo
+// from: rota que vinhemos
+// next: callback que usamos para pararmos
+router.beforeEach((to, from, next) => {
+  const requiredAuth = to.matched.some(record => record.meta.requiredAuth);
+  const currentUser = store.state.currentUser;
+
+  if (requiredAuth && !currentUser) {
+    next('/login');
+  }
+  else{
+    next('/')
+  }
+});
+
 const app = new Vue({
     el: '#app',
     router,
