@@ -7,7 +7,8 @@ export default {
     isLoggedIn: !!user,
     loading: false,
     authError: null,
-    customers: []
+    customers: [],
+    welcome: "olá"
   },
   getters: {
     isLoading(state) {
@@ -24,6 +25,9 @@ export default {
     },
     customers(state) {
       return state.customers;
+    },
+    welcome(state){
+      return state.welcome;
     }
   },
   mutations: {

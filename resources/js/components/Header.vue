@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <router-link class="navbar-brand" to="/">LaraCostumerVue</router-link>
+            <router-link class="navbar-brand" to="/">LaraCustomerVue</router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,7 +20,8 @@
                           <router-link to="/customers" class="nav-link">Customers</router-link>
                       </li>
                       <li class="nav-item dropdown">
-                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                              data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
                               {{ currentUser.name }} <span class="caret"></span>
                           </a>
 
