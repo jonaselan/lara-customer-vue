@@ -6,34 +6,36 @@ import CustomerCreate from './components/customers/Create.vue';
 import CustomerShow from './components/customers/Show.vue';
 
 export const routes = [
-  {
-    path: '/login',
-    component: Login
-  },
-  {
-    path: '/',
-    component: Home,
-    meta: { requiresAuth: true },
-  },
-  {
+    {
+        path: '/',
+        component: Home,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: '/login',
+        component: Login
+    },
+    {
     path: '/customers',
     component: CustomerMain,
-    meta: { requiresAuth: true },
+    meta: {
+        requiresAuth: true
+    },
     // Dentro do componente principal de customer irá ser
     // redenrizado as seguintes rotas detrno de "route-view"
     children: [
-      {
-        path: '/',
-        component: CustomerIndex
-      },
-      {
-        path: 'create',
-        component: CustomerCreate
-      },
-      {
-        path: ':id',
-        component: CustomerShow
-      }
+        {
+            path: '/',
+            component: CustomerIndex
+        },
+        {
+            path: 'create',
+            component: CustomerCreate
+        },
+        {
+            path: ':id',
+            component: CustomerShow
+        }
     ]
   },
 ];

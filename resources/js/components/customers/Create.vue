@@ -35,6 +35,8 @@
                     </td>
                 </tr>
             </table>
+
+            <image-uploader></image-uploader>
         </form>
         <div class="errors" v-if="errors">
             <ul>
@@ -48,8 +50,12 @@
 
 <script>
     import validate from 'validate.js';
+    import ImageUploader from "./ImageUploader";
     export default {
         name: 'create',
+        components: {
+            ImageUploader
+        },
         data() {
             return {
                 customer: {
