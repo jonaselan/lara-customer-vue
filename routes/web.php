@@ -11,6 +11,8 @@
 |
 */
 
+Route::post('/images-upload', 'ImagesController@store');
+
 Route::get('{any}', function () {
     return view('home');
 })->where('any','.*');

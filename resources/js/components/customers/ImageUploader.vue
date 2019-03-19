@@ -11,7 +11,6 @@
             <button @click="upload">Upload</button>
         </div>
 
-
         <div v-show="!images.length">
             <i class="fa fa-cloud-upload"></i>
             <p>Drag your images here</p>
@@ -27,7 +26,7 @@
                 <img :src="image" :alt="`Image Uploader ${index}`">
                 <div class="details">
                     <span class="name" v-text="files[index].name"></span>
-                    <!--<span class="size" v-text="getFileSize(files[index].size)"></span>-->
+                    <span class="size" v-text="getFileSize(files[index].size)"></span>
                 </div>
             </div>
         </div>
@@ -37,12 +36,15 @@
 
 <!-- fazer
  -- deletar arquivos,
- -- fazer o upload real para dentro do sistema através de uma rota
+ -- deletar user
+ - mostrar imagens quando fizer o show
+ - corrigir problema problema com o botão de salvar user
  -->
 <script>
     export default {
         data: () => ({
             isDragging: false,
+            // esse contador é para corrigir a bugada que dá no estilo da div
             draggingCount: 0,
             files: [],
             images: [],
@@ -80,7 +82,7 @@
             },
             addImage(file) {
                 if (!file.type.match('image.*')){
-                    alert(`${file.name} não é uma imagem`)
+                    alert(`${file.name} não é uma imagem`);
                     return false;
                 }
 
@@ -91,10 +93,29 @@
                 reader.readAsDataURL(file);
 
             },
-            getFileSize(){
+            getFileSize(size){
+                const fSExt = ['Bytes', 'KB', 'MB', 'GB'];
+                let i = 0;
 
+                while(size > 900) {
+                    size /= 1024;
+                    i++;
+                }
+                return `${(Math.round(size * 100) / 100)} ${fSExt[i]}`;
             },
-            upload(e){
+            upload(){
+                const formData = new FormData();
+
+                this.files.forEach(file => {
+                    formData.append('images[]', file, file.name);
+                });
+
+                axios.post('/images-upload', formData)
+                    .then(response => {
+                        this.$toastr.s('All images uplaoded successfully');
+                        this.images = [];
+                        this.files = [];
+                    })
 
             },
         }
@@ -178,6 +199,7 @@
                 }
             }
         }
+
         .upload-control {
             position: absolute;
             width: 100%;
@@ -202,5 +224,6 @@
                 margin-right: 10px;
             }
         }
+
     }
 </style>
