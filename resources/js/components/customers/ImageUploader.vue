@@ -34,12 +34,6 @@
     </div>
 </template>
 
-<!-- fazer
- -- deletar arquivos,
- -- deletar user
- - mostrar imagens quando fizer o show
- - corrigir problema problema com o botão de salvar user
- -->
 <script>
     export default {
         data: () => ({
