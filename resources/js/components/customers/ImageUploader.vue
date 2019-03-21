@@ -25,6 +25,7 @@
             <div class="img-wrapper" v-for="(image, index) in images" :key="index">
                 <img :src="image" :alt="`Image Uploader ${index}`">
                 <div class="details">
+                    <button class="delete-image" @click="deleteImage(index)">X</button>
                     <span class="name" v-text="files[index].name"></span>
                     <span class="size" v-text="getFileSize(files[index].size)"></span>
                 </div>
@@ -112,6 +113,10 @@
                     })
 
             },
+            deleteImage(index){
+                this.files.splice(index, 1);
+                this.images.splice(index, 1);
+            }
         }
     }
 </script>
@@ -217,6 +222,14 @@
                 padding: 2px 5px;
                 margin-right: 10px;
             }
+        }
+
+        .delete-image {
+            position: relative;
+            bottom: 100px;
+            border-radius: 24px;
+            background-color: #d28989;
+            border: 1px solid white;
         }
 
     }
