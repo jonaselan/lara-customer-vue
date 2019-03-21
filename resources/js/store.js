@@ -55,6 +55,11 @@ export default {
     },
     fillCustomerState(state, customers){
       state.customers = customers;
+    },
+    removeCustomerState(state, id) {
+        state.customers = state.customers.filter(function(val){
+            return val.id !== id;
+        });
     }
   },
   actions: {
@@ -66,6 +71,16 @@ export default {
            .then((response) => {
               context.commit('fillCustomerState', response.data.customers);
            });
+    },
+    deleteCustomer(context, id) {
+        axios.delete(`api/customers/${id}`)
+            .then((response) => {
+                console.log(response.code, response.data);
+                if (response.code === 200) {
+                    context.commit('removeCustomerState', id);
+                    alert("Customers deleted!");
+                }
+            });
     }
   }
 };

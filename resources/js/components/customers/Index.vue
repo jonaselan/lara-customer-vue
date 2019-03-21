@@ -22,7 +22,10 @@
                         <td>{{ customer.email }}</td>
                         <td>{{ customer.phone }}</td>
                         <td>
-                            <router-link :to="`/customers/${customer.id}`">View</router-link>
+                            <router-link :to="`/customers/${customer.id}`">
+                                View
+                            </router-link>
+                            <a href="#" @click="deleteCustomer(customer.id)">Delete</a>
                         </td>
                     </tr>
                 </template>
@@ -46,6 +49,11 @@
                 return this.$store.getters.customers;
             }
         },
+        methods: {
+            deleteCustomer(id){
+                this.$store.dispatch('deleteCustomer', id)
+            }
+        }
     }
 </script>
 

@@ -24,4 +24,5 @@ Route::group(['middleware' => 'jwt.auth', 'prefix' => 'customers'], function ($r
     Route::get('', 'CustomersController@index');
     Route::post('', 'CustomersController@store');
     Route::get('{id}', 'CustomersController@show');
+    Route::delete('{id}', 'CustomersController@delete');
 });

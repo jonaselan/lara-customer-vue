@@ -25,4 +25,22 @@ class CustomersController extends Controller
         return response()
               ->json(["customer" => $customer], 200);
     }
+
+    public function delete($id)
+    {
+        $msg = "fail";
+
+        try {
+            if (Customer::find($id)->delete()){
+                $msg = "done";
+            }
+        }
+        catch (\Exception $e) {
+            return response()
+                ->json(['message' => $e->getMessage(), 500]);
+        }
+
+        return response()
+            ->json(['message' => $msg, 200]);
+    }
 }
