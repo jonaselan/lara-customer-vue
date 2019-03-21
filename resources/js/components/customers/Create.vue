@@ -27,6 +27,11 @@
                     </td>
                 </tr>
                 <tr>
+                    <td colspan="2">
+                        <image-uploader></image-uploader>
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <router-link to="/customers" class="btn">Cancel</router-link>
                     </td>
@@ -36,7 +41,6 @@
                 </tr>
             </table>
 
-            <image-uploader></image-uploader>
         </form>
         <div class="errors" v-if="errors">
             <ul>
@@ -81,7 +85,7 @@
                     this.errors = errors;
                     return;
                 }
-                console.log(this.$data.customer);
+
                 axios.post('/api/customers', this.$data.customer)
                     .then((response) => {
                         this.$router.push('/customers');

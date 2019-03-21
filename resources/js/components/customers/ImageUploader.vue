@@ -107,7 +107,7 @@
 
                 axios.post('/images-upload', formData)
                     .then(response => {
-                        this.$toastr.s('All images uplaoded successfully');
+                        alert('All images uplaoded successfully');
                         this.images = [];
                         this.files = [];
                     })

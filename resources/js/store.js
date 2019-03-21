@@ -75,8 +75,7 @@ export default {
     deleteCustomer(context, id) {
         axios.delete(`api/customers/${id}`)
             .then((response) => {
-                console.log(response.code, response.data);
-                if (response.code === 200) {
+                if (response.status === 200) {
                     context.commit('removeCustomerState', id);
                     alert("Customers deleted!");
                 }
