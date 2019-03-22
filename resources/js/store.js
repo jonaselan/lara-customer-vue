@@ -37,7 +37,13 @@ export default {
         },
         welcome(state) {
             return state.welcome;
-        }
+        },
+        filterCustomer: state => field => state.customers.filter(customer => customer.name == field),
+        // filterCustomer(state, field) {
+            // return state.customers.filter(function(customer) {
+            //     return customer.name.includes(field);
+            // });
+        // }
     },
     mutations: {
         login(state) {

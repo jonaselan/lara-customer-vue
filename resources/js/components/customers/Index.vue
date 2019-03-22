@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="btn-wrapper">
-            <input type="text" v-model="filterField" @input="filterCustomers">
+            <input type="text" v-model="filterField">
             <router-link to="/customers/create" class="btn btn-primary btn-sm">Create</router-link>
         </div>
         <table class="table">
@@ -40,26 +40,28 @@
         name: 'index',
         data() {
             return {
-                filterField: ''
+                filterField: '',
+                cust: []
             }
         },
-        mounted() {
-          if (this.customers.length) {
-              return;
-          }
+        beforeMount() {
+            if (this.customers.length) {
+                return;
+            }
 
-          this.$store.dispatch('getCustomers');
+            this.$store.dispatch('getCustomers');
         },
         computed: {
             customers() {
-                return this.$store.getters.customers;
-            }
+                return this.$store.getters.customers.filter((customer) => {
+                    return customer.name.includes(this.filterField);
+                });
+            },
         },
         methods: {
             deleteCustomer(id){
                 this.$store.dispatch('deleteCustomer', id)
             },
-            
         }
     }
 </script>
