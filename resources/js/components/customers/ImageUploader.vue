@@ -8,7 +8,7 @@
 
         <div class="upload-control" v-show="images.length">
             <label for="file">Select a file</label>
-            <button @click="upload">Upload</button>
+            <!--<button @click="upload">Upload</button>-->
         </div>
 
         <div v-show="!images.length">
@@ -41,10 +41,16 @@
             isDragging: false,
             // esse contador é para corrigir a bugada que dá no estilo da div
             draggingCount: 0,
-            files: [],
-            images: [],
         }),
         name: "ImageUploader",
+        computed: {
+            images() {
+                return this.$store.getters.images;
+            },
+            files() {
+                return this.$store.getters.files;
+            },
+        },
         methods: {
             OnDragEnter(e) {
                 e.preventDefault();
@@ -81,10 +87,10 @@
                     return false;
                 }
 
-                this.files.push(file);
+                this.$store.dispatch('storeFile', file);
 
                 const reader = new FileReader();
-                reader.onload = (e) => this.images.push(e.target.result);
+                reader.onload = (e) => this.$store.dispatch('storeImage', e.target.result);
                 reader.readAsDataURL(file);
 
             },

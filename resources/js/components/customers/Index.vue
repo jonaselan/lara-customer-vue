@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="btn-wrapper">
+            <input type="text" v-model="filterField" @input="filterCustomers">
             <router-link to="/customers/create" class="btn btn-primary btn-sm">Create</router-link>
         </div>
         <table class="table">
@@ -37,6 +38,11 @@
 <script>
     export default {
         name: 'index',
+        data() {
+            return {
+                filterField: ''
+            }
+        },
         mounted() {
           if (this.customers.length) {
               return;
@@ -52,7 +58,8 @@
         methods: {
             deleteCustomer(id){
                 this.$store.dispatch('deleteCustomer', id)
-            }
+            },
+            
         }
     }
 </script>
