@@ -4,7 +4,7 @@ export function initialize(store, router) {
     // next: callback que usamos para pararmos
     router.beforeEach((to, from, next) => {
         const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-        const currentUser = store.state.currentUser;
+        const currentUser = store.getters.currentUser;
 
         if(requiresAuth && !currentUser) {
             next('/login');

@@ -5,11 +5,6 @@ import state from './state';
 
 export const authModule = {
     state,
-    // state: {
-    //     customers: [],
-    //     files: [],
-    //     images: [],
-    // },
     mutations,
     actions,
     getters
