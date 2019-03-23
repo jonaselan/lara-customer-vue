@@ -2,16 +2,21 @@
 
 export default {
     allCustomers(){
-        axios.get('api/customers')
+        return axios.get('api/customers')
             .then((response) => {
-                return response;
+                return response.data;
             });
     },
     getCustomerById(id) {
-        console.log('qwe123');
-        axios.get(`/api/customers/${id}`)
+        return axios.get(`/api/customers/${id}`)
             .then((response) => {
-                this.customer = response.data.customer
+                return response.data.customer
+            });
+    },
+    deleteCustomerById(id) {
+        return axios.delete(`/api/customers/${id}`)
+            .then((response) => {
+                return 'Customers deleted!'
             });
     },
 }

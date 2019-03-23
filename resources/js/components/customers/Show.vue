@@ -29,7 +29,8 @@
 </template>
 
 <script>
-    import api from '../../api/customers'
+    import api from '../../api/customers';
+    import { mapGetters } from 'vuex';
 
     export default {
         name: 'show',
@@ -42,20 +43,16 @@
             if (this.customers.length) {
                 this.customer = this.customers.find((customer) => customer.id == this.$route.params.id);
             } else {
-                api.getCustomerById(this.$route.params.id)
-                // axios.get(`/api/customers/${this.$route.params.id}`)
-                //     .then((response) => {
-                //         this.customer = response.data.customer
-                //     });
+                api.getCustomerById(this.$route.params.id).then(customer => {
+                    this.customer = customer;
+                })
             }
         },
         computed: {
-            currentUser() {
-                return this.$store.getters.currentUser;
-            },
-            customers() {
-                return this.$store.getters.customers;
-            }
+            ...mapGetters([
+                'currentUser',
+                'customers',
+            ])
         }
     }
 </script>

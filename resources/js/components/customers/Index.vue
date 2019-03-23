@@ -36,6 +36,8 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
+
     export default {
         name: 'index',
         data() {
@@ -58,9 +60,10 @@
             },
         },
         methods: {
-            deleteCustomer(id){
-                this.$store.dispatch('deleteCustomer', id)
-            },
+            // o payload vai implicitamente
+            ...mapActions([
+                'deleteCustomer'
+            ])
         }
     }
 </script>

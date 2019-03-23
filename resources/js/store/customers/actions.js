@@ -8,24 +8,15 @@ export default {
         context.commit("fillImage", image);
     },
     getCustomers({ commit }) {
-        // api.allCustomers(response => {
-        //     console.log(response)
-        //     commit('fillCustomerState', response.data.customers)
-        // })
-
-        axios.get('api/customers')
-            .then((response) => {
-                commit('fillCustomerState', response.data.customers);
-            });
+        api.allCustomers().then(data => {
+            commit('fillCustomerState', data.customers)
+        })
     },
     deleteCustomer(context, id) {
-        axios.delete(`api/customers/${id}`)
-            .then((response) => {
-                if (response.status === 200) {
-                    context.commit('removeCustomerState', id);
-                    alert("Customers deleted!");
-                }
-            });
+        api.deleteCustomerById(id).then(data => {
+            context.commit('removeCustomerState', id);
+            alert(data);
+        })
     },
     resetMedias(context) {
         context.commit('eraseMedias');
