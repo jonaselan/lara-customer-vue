@@ -22,7 +22,7 @@ const router = new VueRouter({
 
 initialize(store, router);
 
-const app = new Vue({
+new Vue({
     el: '#app',
     router,
     store,

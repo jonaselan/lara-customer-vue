@@ -40,8 +40,7 @@
         name: 'index',
         data() {
             return {
-                filterField: '',
-                cust: []
+                filterField: ''
             }
         },
         beforeMount() {

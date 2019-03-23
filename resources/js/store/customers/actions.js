@@ -1,3 +1,5 @@
+import api from '../../api/customers';
+
 export default {
     storeFile(context, file) {
         context.commit("fillFile", file);
@@ -5,10 +7,15 @@ export default {
     storeImage(context, image) {
         context.commit("fillImage", image);
     },
-    getCustomers(context) {
+    getCustomers({ commit }) {
+        // api.allCustomers(response => {
+        //     console.log(response)
+        //     commit('fillCustomerState', response.data.customers)
+        // })
+
         axios.get('api/customers')
             .then((response) => {
-                context.commit('fillCustomerState', response.data.customers);
+                commit('fillCustomerState', response.data.customers);
             });
     },
     deleteCustomer(context, id) {

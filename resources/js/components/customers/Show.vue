@@ -29,22 +29,25 @@
 </template>
 
 <script>
+    import api from '../../api/customers'
+
     export default {
         name: 'show',
-        created() {
-            if (this.customers.length) {
-                this.customer = this.customers.find((customer) => customer.id == this.$route.params.id);
-            } else {
-                axios.get(`/api/customers/${this.$route.params.id}`)
-                    .then((response) => {
-                        this.customer = response.data.customer
-                    });
-            }
-        },
         data() {
             return {
                 customer: null
             };
+        },
+        created() {
+            if (this.customers.length) {
+                this.customer = this.customers.find((customer) => customer.id == this.$route.params.id);
+            } else {
+                api.getCustomerById(this.$route.params.id)
+                // axios.get(`/api/customers/${this.$route.params.id}`)
+                //     .then((response) => {
+                //         this.customer = response.data.customer
+                //     });
+            }
         },
         computed: {
             currentUser() {
