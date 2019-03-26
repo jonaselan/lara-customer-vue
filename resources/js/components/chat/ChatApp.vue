@@ -18,3 +18,9 @@
         },
     }
 </script>
+
+<style lang="scss" scoped>
+    .chat-app {
+        display: flex;
+    }
+</style>
