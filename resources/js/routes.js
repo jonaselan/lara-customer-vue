@@ -4,6 +4,7 @@ import CustomerMain from './components/customers/Main.vue';
 import CustomerIndex from './components/customers/Index.vue';
 import CustomerCreate from './components/customers/Create.vue';
 import CustomerShow from './components/customers/Show.vue';
+import ChatApp from './components/chat/ChatApp.vue';
 
 export const routes = [
     {
@@ -27,6 +28,10 @@ export const routes = [
         {
             path: '/',
             component: CustomerIndex
+        },
+        {
+            path: 'chat',
+            component: ChatApp
         },
         {
             path: 'create',

@@ -1,5 +1,3 @@
-
-
 export default {
     allCustomers(){
         return axios.get('api/customers')

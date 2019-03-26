@@ -1,5 +1,6 @@
 export default {
     fillCustomerState(state, customers) {
+        console.log(customers)
         state.customers = customers;
     },
     removeCustomerState(state, id) {

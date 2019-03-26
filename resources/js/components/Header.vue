@@ -17,6 +17,9 @@
                   </template>
                   <template v-else>
                       <li>
+                          <router-link to="/customers/chat" class="nav-link">Chat</router-link>
+                      </li>
+                      <li>
                           <router-link to="/customers" class="nav-link">Customers</router-link>
                       </li>
                       <li class="nav-item dropdown">

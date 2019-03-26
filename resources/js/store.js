@@ -1,10 +1,12 @@
-import { customerModule } from "./store/customers/store"
 import { authModule } from "./store/auth/store"
+import { customerModule } from "./store/customers/store"
+import { chatModule } from "./store/chat/store"
 
 export default {
     modules: {
         customerModule,
-        authModule
+        authModule,
+        chatModule,
     },
     state: {
         loading: false,

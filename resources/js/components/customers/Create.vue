@@ -55,6 +55,7 @@
 <script>
     import validate from 'validate.js';
     import ImageUploader from "./ImageUploader";
+
     export default {
         name: 'create',
         components: {
