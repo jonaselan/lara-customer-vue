@@ -1,6 +1,6 @@
 export default {
     allCustomers(){
-        return axios.get('api/customers')
+        return axios.get('/api/customers')
             .then((response) => {
                 return response.data;
             });
