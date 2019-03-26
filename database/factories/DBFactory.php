@@ -30,3 +30,12 @@ $factory->define(App\Customer::class, function (Faker $faker) {
         'website' => $faker->url
     ];
 });
+
+$factory->define(App\Message::class, function (Faker $faker) {
+    $id = $faker->numberBetween(1, 10);
+    return [
+        'from' => $id,
+        'to' => $id + 1,
+        'content' => $faker->sentence
+    ];
+});
