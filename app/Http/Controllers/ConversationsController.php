@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ConversationsController extends Controller
 {
@@ -15,8 +16,7 @@ class ConversationsController extends Controller
 
         // get a collection of items where sender_id is the user who sent us a message
         // and messages_count is the number of unread messages we have from him
-        $unreadIds = Message::select(\DB::raw('`from` as sender_id, count(`from`) as messages_count'))
-            ->where('to', auth('api')->id())
+        $unreadIds = Message::select(DB::raw("'from' as sender_id, count('from') as messages_count"))->where('to', auth('api')->id())
             ->where('read', false)
             ->groupBy('from')
             ->get();
@@ -30,7 +30,9 @@ class ConversationsController extends Controller
             return $user;
         });
 
-        return response()->json($users);
+        return response()->json([
+            'users' => $users
+        ]);
     }
     public function getMessagesFor($id)
     {
