@@ -1,6 +1,6 @@
 <template>
     <div class="message-composer">
-        <textarea v-model="message" @keydown.enteder="send" placeholder="Message..."></textarea>
+        <textarea v-model="message" @keydown.enter="send" placeholder="Message..."></textarea>
     </div>
 </template>
 
@@ -12,7 +12,17 @@
                 message: '',
             }
         },
+        methods: {
+            send(e) {
+                if (this.message === '') {
+                    // se pá colocar um alerta de message
+                    return;
+                }
 
+                // mutation for send message to array located on state
+
+            }
+        },
     }
 </script>
 

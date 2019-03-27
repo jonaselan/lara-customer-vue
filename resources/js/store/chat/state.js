@@ -1,4 +1,5 @@
 export default {
     messages: null,
-    selectedCustomer: [],
+    selectedUser: [],
+    users: [],
 }

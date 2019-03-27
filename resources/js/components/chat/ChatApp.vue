@@ -1,19 +1,18 @@
 <template>
     <div class="chat-app">
-        qwe
         <conversation></conversation>
-        <customers-list></customers-list>
+        <users-list></users-list>
     </div>
 </template>
 
 <script>
     import Conversation from "./Conversation";
-    import CustomersList from "./CustomersList";
+    import UsersList from "./UsersList";
 
     export default {
         name: 'chat',
         components: {
-            CustomersList,
+            UsersList,
             Conversation
         },
     }

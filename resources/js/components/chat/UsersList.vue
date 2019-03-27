@@ -1,16 +1,16 @@
 <template>
-    <div class="customers-list">
+    <div class="users-list">
         <ul>
-            <li v-for="customer in customers"
-                :key="customer.id"
-                @click="selectCustomer(index, customer)"
+            <li v-for="user in users"
+                :key="user.id"
+                @click="selectUser(index, user)"
                 :class="{ 'selected': index == selected}">
                 <div class="avatar">
-                    <img src="http://via.placeholder.com/150x150" :alt="customer.id">
+                    <img src="http://via.placeholder.com/150x150" :alt="user.id">
                 </div>
-                <div class="customer">
-                    <p class="name">{{customer.name}}</p>
-                    <p class="email">{{customer.email}}</p>
+                <div class="user">
+                    <p class="name">{{user.name}}</p>
+                    <p class="email">{{user.email}}</p>
                 </div>
             </li>
         </ul>
@@ -19,36 +19,36 @@
 
 <script>
     export default {
-        name: "CustomersList",
+        name: "UsersList",
         data() {
             return {
                 selected: 0
             }
         },
         beforeMount() {
-            if (this.customers.length) {
+            if (this.users.length) {
                 return;
             }
 
-            this.$store.dispatch('getCustomers');
+            this.$store.dispatch('getUsers');
         },
         computed: {
-            customers() {
-                return this.$store.getters.customers
+            users() {
+                return this.$store.getters.users
             },
         },
         methods: {
-            selectCustomer(index, customer) {
+            selectUser(index, user) {
                 this.selected = index;
 
-                this.$state.dispatch('selectCustomer', customer);
+                this.$state.dispatch('selectUser', user);
             }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .customers-list {
+    .users-list {
         flex: 2;
         max-height: 600px;
         overflow: scroll;
@@ -93,7 +93,7 @@
                         margin: 0 auto;
                     }
                 }
-                .customer {
+                .user {
                     flex: 3;
                     font-size: 10px;
                     overflow: hidden;
