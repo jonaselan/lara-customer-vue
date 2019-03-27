@@ -28,6 +28,7 @@ Route::group(['middleware' => 'jwt.auth', 'prefix' => 'customers'], function ($r
 });
 
 Route::group(['middleware' => 'jwt.auth', 'prefix' => 'conversation'], function ($router) {
-    Route::get('{id}', 'ContactsController@getMessagesFor');
-    Route::post('send', 'ContactsController@send');
+    Route::get('get', 'ConversationsController@getUsers');
+    Route::get('{id}', 'ConversationsController@getMessagesFor');
+    Route::post('send', 'ConversationsController@send');
 });

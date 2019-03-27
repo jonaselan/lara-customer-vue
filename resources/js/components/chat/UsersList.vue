@@ -1,7 +1,10 @@
 <template>
     <div class="customers-list">
         <ul>
-            <li v-for="customer in customers" :key="customer.id">
+            <li v-for="customer in customers"
+                :key="customer.id"
+                @click="selectCustomer(index, customer)"
+                :class="{ 'selected': index == selected}">
                 <div class="avatar">
                     <img src="http://via.placeholder.com/150x150" :alt="customer.id">
                 </div>
@@ -17,6 +20,11 @@
 <script>
     export default {
         name: "CustomersList",
+        data() {
+            return {
+                selected: 0
+            }
+        },
         beforeMount() {
             if (this.customers.length) {
                 return;
@@ -29,6 +37,13 @@
                 return this.$store.getters.customers
             },
         },
+        methods: {
+            selectCustomer(index, customer) {
+                this.selected = index;
+
+                this.$state.dispatch('selectCustomer', customer);
+            }
+        }
     }
 </script>
 

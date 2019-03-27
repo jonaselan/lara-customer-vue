@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ConversationsController extends Controller
 {
-    public function get()
+    public function getUsers()
     {
         // get all users except the authenticated one
         $contacts = User::where('id', '!=', auth()->id())->get();
