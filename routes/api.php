@@ -26,3 +26,8 @@ Route::group(['middleware' => 'jwt.auth', 'prefix' => 'customers'], function ($r
     Route::get('{id}', 'CustomersController@show');
     Route::delete('{id}', 'CustomersController@delete');
 });
+
+Route::group(['middleware' => 'jwt.auth', 'prefix' => 'conversation'], function ($router) {
+    Route::get('{id}', 'ContactsController@getMessagesFor');
+    Route::post('send', 'ContactsController@send');
+});
