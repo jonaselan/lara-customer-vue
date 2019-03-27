@@ -1,8 +1,8 @@
 <template>
     <div class="messages-feed">
-        <ul v-if="user">
+        <ul v-if="selectedUser">
             <li v-for="message in messages"
-                :class="`message ${message.to === user.id ? 'sent' : 'received'}`"
+                :class="`message ${message.to === selectedUser.id ? 'sent' : 'received'}`"
                 :key="message.id">
                 <div class="text">
                     {{ message.content }}
@@ -13,13 +13,15 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
+
     export default {
         name: "MessagesFeed",
         computed: {
-            messages() {
-                return this.$store.getters.messages;
-            },
-            user
+            ...mapGetters([
+                'messages',
+                'selectedUser',
+            ])
         }
     }
 </script>

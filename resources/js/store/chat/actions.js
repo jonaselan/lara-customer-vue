@@ -6,7 +6,7 @@ export default {
     },
     getUsers({ commit }) {
         api.allUsers().then(data => {
-            // commit('fillCustomerState', data.customers)
+            commit('fillUserState', data.users)
         })
     },
 }

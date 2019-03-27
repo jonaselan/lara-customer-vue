@@ -1,9 +1,9 @@
 export default {
-    message(state) {
-        return state.message;
+    messages(state) {
+        return state.messages;
     },
-    user(state) {
-        return state.user
+    selectedUser(state) {
+        return state.selectedUser
     },
     users({ users }) {
         return users;
