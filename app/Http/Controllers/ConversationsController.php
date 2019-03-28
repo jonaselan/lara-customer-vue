@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use App\User;
 use App\Message;
 use Illuminate\Http\Request;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class ConversationsController extends Controller
 {
+
     public function getUsers()
     {
         // get all users except the authenticated one
@@ -66,7 +68,7 @@ class ConversationsController extends Controller
             'content' => $request->text
         ]);
 
-//        broadcast(new NewMessage($message));
+        broadcast(new NewMessage($message));
 
         return response()->json([
             'message' => $message

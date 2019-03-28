@@ -11,7 +11,7 @@ export default {
                 return response.data;
             });
     },
-    sendMessage(body) {
+    createNewMessage(body) {
         return axios.post(`/api/conversation/send`, body)
         .then((response) => {
             return response.data;
