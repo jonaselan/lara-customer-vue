@@ -27,7 +27,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .feed {
+    .messages-feed {
         background: #f0f0f0;
         height: 100%;
         max-height: 470px;

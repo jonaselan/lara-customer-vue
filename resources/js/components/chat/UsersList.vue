@@ -3,8 +3,8 @@
         <ul>
             <li v-for="user in users"
                 :key="user.id"
-                @click="selectUser(index, user)"
-                :class="{ 'selected': index == selected}">
+                @click="startConversation(user)"
+                :class="{ 'selected': user === selectedUser}">
                 <div class="avatar">
                     <img src="http://via.placeholder.com/150x150" :alt="user.id">
                 </div>
@@ -18,13 +18,10 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
+
     export default {
         name: "UsersList",
-        data() {
-            return {
-                selected: 0
-            }
-        },
         beforeMount() {
             if (this.users.length) {
                 return;
@@ -33,15 +30,16 @@
             this.$store.dispatch('getUsers');
         },
         computed: {
-            users() {
-                return this.$store.getters.users
-            },
+            ...mapGetters([
+                'users',
+                'selectedUser'
+            ])
         },
         methods: {
-            selectUser(index, user) {
-                this.selected = index;
+            startConversation(user) {
+                this.$store.dispatch('setSelectedUser', user);
 
-                this.$state.dispatch('selectUser', user);
+                this.$store.dispatch('loadMessages', user);
             }
         }
     }

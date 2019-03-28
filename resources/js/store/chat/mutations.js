@@ -1,8 +1,11 @@
 export default {
-    setSelectedUser(state, user) {
-        state.selectedUser.push(user);
+    fillSelectedUser(state, user) {
+        state.selectedUser = user;
     },
     fillUserState(state, users) {
         state.users = users;
-    }
+    },
+    fillConversationMessages(state, messages) {
+        state.messages = messages;
+    },
 }

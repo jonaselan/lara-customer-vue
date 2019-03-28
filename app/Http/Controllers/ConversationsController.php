@@ -34,10 +34,13 @@ class ConversationsController extends Controller
             'users' => $users
         ]);
     }
+
     public function getMessagesFor($id)
     {
         // mark all messages with the selected user as read
-        Message::where('from', $id)->where('to', auth('api')->id())->update(['read' => true]);
+        Message::where('from', $id)
+            ->where('to', auth('api')->id())
+            ->update(['read' => true]);
 
         // get all messages between the authenticated user and the selected user
         $messages = Message::where(function($q) use ($id) {
@@ -49,8 +52,12 @@ class ConversationsController extends Controller
                         })
                         ->get();
 
-        return response()->json($messages);
+        return response()->json([
+            'messages' => $messages
+        ]);
+
     }
+
     public function send(Request $request)
     {
         $message = Message::create([

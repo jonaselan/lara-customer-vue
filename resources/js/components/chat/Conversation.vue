@@ -1,6 +1,6 @@
 <template>
     <div class="conversation">
-        <h1> {{ user ? user.name : 'Select a user' }}</h1>
+        <h1> {{ selectedUser ? selectedUser.name : 'Select a user' }}</h1>
         <messages-feed></messages-feed>
         <messages-composer></messages-composer>
     </div>
@@ -23,9 +23,9 @@
             MessagesFeed
         },
         computed: {
-            // ...mapGetters([
-            //    'user'
-            // ]),
+            ...mapGetters([
+               'selectedUser'
+            ]),
         }
     }
 </script>

@@ -32,10 +32,14 @@ $factory->define(App\Customer::class, function (Faker $faker) {
 });
 
 $factory->define(App\Message::class, function (Faker $faker) {
-    $id = $faker->numberBetween(1, 10);
+    do {
+        $from = rand(1, 10);
+        $to = rand(1, 10);
+    } while ($from === $to);
+
     return [
-        'from' => $id,
-        'to' => $id + 1,
+        'from' => $from,
+        'to' => $to,
         'content' => $faker->sentence
     ];
 });
