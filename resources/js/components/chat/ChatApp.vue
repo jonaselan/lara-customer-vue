@@ -23,12 +23,11 @@
             ])
         },
         mounted() {
-            Echo.private(`messages.${this.currentUser.id}`)
-                .listen('NewMessage', (e) => {
+            // window.Echo.private(`messages.${this.currentUser.id}`)
+            //     .listen('NewMessage', (e) => {
                     // e.message vem do broadcastWith, dentro do evento NewMessage
-                    alert(e.message);
                     // this.handleIncomming(e.message)
-                })
+                // })
         },
         methods: {
             handleIncomming(message) {

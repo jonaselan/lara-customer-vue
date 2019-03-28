@@ -68,7 +68,7 @@ class ConversationsController extends Controller
             'content' => $request->text
         ]);
 
-        broadcast(new NewMessage($message));
+        // broadcast(new NewMessage($message));
 
         return response()->json([
             'message' => $message
