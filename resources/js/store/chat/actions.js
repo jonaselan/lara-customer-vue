@@ -13,5 +13,10 @@ export default {
     },
     setSelectedUser({ commit }, user) {
         commit('fillSelectedUser', user);
-    }
+    },
+    sendMessage({ commit }, message) {
+        api.sendMessage(message).then(data => {
+            commit('fillNewMessageState', data.message)
+        })
+    },
 }

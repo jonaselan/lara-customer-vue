@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
     export default {
         name: "MessagesComposer",
         data() {
@@ -12,15 +13,26 @@
                 message: '',
             }
         },
+        computed: {
+            ...mapGetters([
+                'selectedUser'
+            ])
+        },
         methods: {
             send(e) {
+                e.preventDefault();
+
                 if (this.message === '') {
-                    // se pá colocar um alerta de message
+                    alert('Typing the message');
                     return;
                 }
 
-                // mutation for send message to array located on state
+                this.$store.dispatch('sendMessage', {
+                    sender_id: this.selectedUser.id,
+                    text: this.message,
+                });
 
+                this.message = '';
             }
         },
     }

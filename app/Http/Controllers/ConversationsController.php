@@ -62,12 +62,14 @@ class ConversationsController extends Controller
     {
         $message = Message::create([
             'from' => auth('api')->id(),
-            'to' => $request->user_id,
-            'text' => $request->text
+            'to' => $request->sender_id,
+            'content' => $request->text
         ]);
 
 //        broadcast(new NewMessage($message));
 
-        return response()->json($message);
+        return response()->json([
+            'message' => $message
+        ]);
     }
 }

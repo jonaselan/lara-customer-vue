@@ -1,5 +1,5 @@
 <template>
-    <div class="messages-feed">
+    <div class="messages-feed" ref="feed">
         <ul v-if="selectedUser">
             <li v-for="message in messages"
                 :class="`message ${message.to === selectedUser.id ? 'sent' : 'received'}`"
@@ -14,14 +14,34 @@
 
 <script>
     import { mapGetters } from 'vuex';
+    import { mapState } from 'vuex';
 
     export default {
         name: "MessagesFeed",
         computed: {
+            ...mapState([
+                'selectedUser',
+                'messages'
+            ]),
             ...mapGetters([
                 'messages',
                 'selectedUser',
             ])
+        },
+        methods: {
+            scrollToBottom() {
+                setTimeout(() => {
+                    this.$refs.feed.scrollTop = this.$refs.feed.scrollHeight - this.$refs.feed.clientHeight;
+                }, 50);
+            }
+        },
+        watch: {
+            selectedUser(selectedUser) {
+                this.scrollToBottom();
+            },
+            messages(messages) {
+                this.scrollToBottom();
+            }
         }
     }
 </script>

@@ -10,5 +10,11 @@ export default {
             .then((response) => {
                 return response.data;
             });
-    }
+    },
+    sendMessage(body) {
+        return axios.post(`/api/conversation/send`, body)
+        .then((response) => {
+            return response.data;
+        });
+    },
 }
