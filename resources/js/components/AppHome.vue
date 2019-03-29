@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        name: 'home',
+        name: 'AppHome',
         computed: {
             welcome() {
                 return this.$store.getters.welcome

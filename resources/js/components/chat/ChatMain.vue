@@ -1,20 +1,20 @@
 <template>
     <div class="chat-app">
-        <conversation></conversation>
-        <users-list></users-list>
+        <ChatConversation/>
+        <ChatUsersList/>
     </div>
 </template>
 
 <script>
-    import Conversation from "./Conversation";
-    import UsersList from "./UsersList";
+    import ChatConversation from "./ChatConversation";
+    import ChatUsersList from "./ChatUsersList";
     import { mapGetters } from 'vuex';
 
     export default {
-        name: 'chat',
+        name: 'ChatMain',
         components: {
-            UsersList,
-            Conversation
+            ChatConversation,
+            ChatUsersList
         },
         computed: {
             ...mapGetters([

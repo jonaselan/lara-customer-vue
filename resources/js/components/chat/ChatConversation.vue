@@ -1,26 +1,26 @@
 <template>
     <div class="conversation">
         <h1> {{ selectedUser ? selectedUser.name : 'Select a user' }}</h1>
-        <messages-feed></messages-feed>
-        <messages-composer></messages-composer>
+        <ChatMessagesFeed/>
+        <ChatMessagesComposer/>
     </div>
 </template>
 
 <script>
-    import MessagesFeed from "./MessagesFeed";
-    import MessagesComposer from "./MessageComposer";
+    import ChatMessagesFeed from "./ChatMessagesFeed";
+    import ChatMessagesComposer from "./ChatMessageComposer";
     import { mapGetters } from 'vuex';
 
     export default {
-        name: "Conversation",
+        name: "ChatConversation",
         data() {
             return {
                 user: ''
             }
         },
         components: {
-            MessagesComposer,
-            MessagesFeed
+            ChatMessagesComposer,
+            ChatMessagesFeed
         },
         computed: {
             ...mapGetters([

@@ -1,7 +1,8 @@
 <template>
   <div id="main">
-    <Header/>
-    
+    <keep-alive>
+      <AppHeader/>
+    </keep-alive>
     <div class="content">
       <router-view> </router-view>
     </div>
@@ -9,10 +10,10 @@
 </template>
 
 <script>
-  import Header from './Header.vue';
+  import AppHeader from './AppHeader.vue';
 
   export default {
-    name: 'main-app',
-    components: { Header }
+    name: 'AppMain',
+    components: { AppHeader }
   }
 </script>

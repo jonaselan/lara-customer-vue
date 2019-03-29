@@ -8,7 +8,7 @@
     import { mapGetters } from 'vuex';
 
     export default {
-        name: "MessagesComposer",
+        name: "ChatMessagesComposer",
         data() {
             return {
                 message: '',

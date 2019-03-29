@@ -1,15 +1,15 @@
-import Home from './components/Home.vue';
+import AppHome from './components/AppHome.vue';
 import Login from './components/auth/Login.vue';
 import CustomerMain from './components/customers/Main.vue';
 import CustomerIndex from './components/customers/Index.vue';
 import CustomerCreate from './components/customers/Create.vue';
 import CustomerShow from './components/customers/Show.vue';
-import ChatApp from './components/chat/ChatApp.vue';
+import ChatMain from './components/chat/ChatMain.vue';
 
 export const routes = [
     {
         path: '/',
-        component: Home,
+        component: AppHome,
         meta: { requiresAuth: true },
     },
     {
@@ -31,7 +31,7 @@ export const routes = [
         },
         {
             path: 'chat',
-            component: ChatApp
+            component: ChatMain
         },
         {
             path: 'create',
