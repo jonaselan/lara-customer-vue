@@ -27,6 +27,6 @@ new Vue({
     router,
     store,
     components: {
-      'AppMain': AppMain
+      AppMain
     }
 });
