@@ -21,7 +21,7 @@
     import { mapGetters } from 'vuex';
 
     export default {
-        name: "UsersList",
+        name: "ChatUsersList",
         beforeMount() {
             if (this.users.length) {
                 return;

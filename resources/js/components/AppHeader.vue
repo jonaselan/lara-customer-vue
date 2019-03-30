@@ -41,7 +41,7 @@
 
 <script>
     export default {
-        name: 'app-header',
+        name: 'AppHeader',
         computed: {
           currentUser(){
             return this.$store.getters.currentUser
