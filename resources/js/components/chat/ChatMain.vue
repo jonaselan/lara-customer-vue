@@ -14,7 +14,7 @@
         name: 'ChatMain',
         components: {
             ChatConversation,
-            ChatUsersList
+            ChatUsersList,
         },
         computed: {
             ...mapGetters([
