@@ -2,9 +2,11 @@ import api from '../../api/chat';
 
 export default {
     loadMessages({commit}, user){
-        api.getConversationMessages(user.id).then(data => {
-            commit('fillConversationMessages', data.messages);
-        })
+        setTimeout(function(){
+            api.getConversationMessages(user.id).then(data => {
+                commit('fillConversationMessages', data.messages);
+            })
+        }, 3000);
     },
     getUsers({ commit }) {
         api.allUsers().then(data => {

@@ -1,5 +1,6 @@
 <template>
     <div class="messages-feed" ref="feed">
+        <Loading v-if="isLoading"/>
         <ul v-if="selectedUser">
             <li v-for="message in messages"
                 :class="`message ${message.to === selectedUser.id ? 'sent' : 'received'}`"
@@ -14,17 +15,22 @@
 
 <script>
     import { mapGetters,mapState } from 'vuex';
+    import Loading from "../Loading";
 
     export default {
         name: "ChatMessagesFeed",
+        components: {
+          Loading,
+        },
         computed: {
             ...mapState([
                 'selectedUser',
-                'messages'
+                'messages',
             ]),
             ...mapGetters([
                 'messages',
                 'selectedUser',
+                'isLoading',
             ])
         },
         methods: {

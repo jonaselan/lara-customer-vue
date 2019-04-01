@@ -37,9 +37,12 @@
         },
         methods: {
             startConversation(user) {
-                this.$store.dispatch('setSelectedUser', user);
+                this.$store.dispatch('changeStatusLoad');
 
+                this.$store.dispatch('setSelectedUser', user);
                 this.$store.dispatch('loadMessages', user);
+
+                this.$store.dispatch('changeStatusLoad');
             }
         }
     }

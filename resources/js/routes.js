@@ -1,6 +1,6 @@
 import AppHome from './components/AppHome.vue';
 import Login from './components/auth/Login.vue';
-import CustomerMain from './components/customers/Main.vue';
+import CustomerMain from './components/Main.vue';
 import CustomerIndex from './components/customers/Index.vue';
 import CustomerCreate from './components/customers/Create.vue';
 import CustomerShow from './components/customers/Show.vue';
