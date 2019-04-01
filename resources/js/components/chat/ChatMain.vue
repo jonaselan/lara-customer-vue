@@ -6,6 +6,7 @@
 </template>
 
 <script>
+    import { NEW_MESSAGE } from '../../definitions/actions';
     import ChatConversation from "./ChatConversation";
     import ChatUsersList from "./ChatUsersList";
     import { mapGetters } from 'vuex';
@@ -33,7 +34,7 @@
             handleIncomming(message) {
                 // se a mensagem for direcionada para o usuário atual (a conversa está aberta)
                 if (this.selectedUser && message.from === this.selectedUser.id) {
-                    this.$store.dispatch('newMessage', message.content);
+                    this.$store.dispatch(NEW_MESSAGE, message.content);
                     return;
                 }
 

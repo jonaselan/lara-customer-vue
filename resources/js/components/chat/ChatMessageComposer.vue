@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import { SEND_MESSAGE } from '../../definitions/actions';
     import { mapGetters } from 'vuex';
 
     export default {
@@ -28,7 +29,7 @@
                     return;
                 }
 
-                this.$store.dispatch('sendMessage', {
+                this.$store.dispatch(SEND_MESSAGE, {
                     sender_id: this.selectedUser.id,
                     text: this.message,
                 });

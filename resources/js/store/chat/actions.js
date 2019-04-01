@@ -1,7 +1,14 @@
 import api from '../../api/chat';
+import {
+    LOAD_MESSAGES,
+    GET_USERS,
+    SET_SELECTED_USER,
+    SEND_MESSAGE,
+    NEW_MESSAGE,
+} from '../../definitions/actions';
 
 export default {
-    loadMessages({commit}, user){
+    [LOAD_MESSAGES] ({commit}, user){
         return new Promise((resolve, reject) => {
             // para simular quiser testar o loading
             setTimeout(() => {
@@ -12,21 +19,21 @@ export default {
             }, 1000)
         })
     },
-    getUsers({ commit }) {
+    [GET_USERS] ({ commit }) {
         api.allUsers().then(data => {
             commit('fillUserState', data.users)
         })
     },
-    setSelectedUser({ commit }, user) {
+    [SET_SELECTED_USER] ({ commit }, user) {
         commit('fillConversationMessages', []);
         commit('fillSelectedUser', user);
     },
-    sendMessage({ commit }, message) {
+    [SEND_MESSAGE] ({ commit }, message) {
         api.createNewMessage(message).then(data => {
             commit('fillNewMessageState', data.message)
         })
     },
-    newMessage({ commit }, message) {
+    [NEW_MESSAGE] ({ commit }, message) {
         commit('fillNewMessageState', message)
     },
 }
