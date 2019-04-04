@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      \App\User::create(['name' => 'user1', 'email' => 'email@email.com', 'password' =>bcrypt('123123')]);
+        \App\User::create(['name' => 'user1', 'email' => 'email@email.com', 'password' =>bcrypt('123123')]);
+
+        factory('App\User', 9)->create();
+
+        factory('App\Message', 100)->create();
+
     }
 }

@@ -24,9 +24,7 @@ $ composer install
 # after configure db 
 $ php artisan migrate 
 
-$ factory('App\User', 10)->create()
-
-$ factory('App\Message', 100)->create()
+$ php artisan db:seed
 
 # keep running for compile assets...
 $ npm run watch

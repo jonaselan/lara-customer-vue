@@ -28,6 +28,16 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
+    public function messages_sent()
+    {
+        return $this->hasMany(Message::class, 'from');
+    }
+
+    public function messages_receives()
+    {
+        return $this->hasMany(Message::class, 'to');
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
