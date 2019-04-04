@@ -18,6 +18,11 @@
 </template>
 
 <script>
+    import {
+        LOAD_MESSAGES,
+        GET_USERS,
+        SET_SELECTED_USER
+    } from "../../definitions/actions";
     import { mapGetters } from 'vuex';
 
     export default {
@@ -27,7 +32,7 @@
                 return;
             }
 
-            this.$store.dispatch('getUsers');
+            this.$store.dispatch(GET_USERS);
         },
         computed: {
             ...mapGetters([
@@ -39,10 +44,10 @@
             startConversation(user) {
                 this.$store.dispatch('changeStatusLoad');
 
-                this.$store.dispatch('setSelectedUser', user);
-                this.$store.dispatch('loadMessages', user);
-
-                this.$store.dispatch('changeStatusLoad');
+                this.$store.dispatch(SET_SELECTED_USER, user);
+                this.$store.dispatch(LOAD_MESSAGES, user).then(() => {
+                    this.$store.dispatch('changeStatusLoad');
+                });
             }
         }
     }

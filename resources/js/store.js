@@ -24,13 +24,11 @@ export default {
     },
     mutations: {
         toggleLoad(state) {
-            console.log(state.loading);
             state.loading = !state.loading;
         }
     },
     actions: {
         changeStatusLoad({ commit }){
-            console.log('123')
             commit('toggleLoad');
         }
     }
