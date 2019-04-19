@@ -12,7 +12,8 @@ export default {
     },
     state: {
         loading: false,
-        welcome: "olá"
+        welcome: "olá",
+        sourceLocal: true,
     },
     getters: {
         isLoading(state) {
@@ -20,16 +21,25 @@ export default {
         },
         welcome(state) {
             return state.welcome;
+        },
+        backendSource(state) {
+            return state.sourceLocal;
         }
     },
     mutations: {
         toggleLoad(state) {
             state.loading = !state.loading;
+        },
+        toggleBackend(state) {
+            state.sourceLocal = !state.sourceLocal;
         }
     },
     actions: {
         changeStatusLoad({ commit }){
             commit('toggleLoad');
+        },
+        changeSourceBackend({ commit }){
+            commit('toggleBackend');
         }
     }
 };

@@ -1,8 +1,18 @@
 <template>
     <div>
-        <div class="btn-wrapper">
-            <input type="text" v-model="filterField">
-            <router-link to="/customers/create" class="btn btn-primary btn-sm">Create</router-link>
+        <div class="row">
+            <div class="col-sm">
+                <p> Origem dos dados: {{ backendSource ? 'local' : 'api externa' }}</p>
+                <label for="toggle-source"> Mudar </label>
+                <input type="checkbox" id="toggle-source" @change="changeSourceBackend()"/>
+                <div class="filters" v-show="!backendSource">
+                    aksjdn
+                </div>
+            </div>
+            <div class="col-sm">
+                <input type="text" v-model="filterField">
+                <router-link to="/customers/create" class="btn btn-primary btn-sm">Create</router-link>
+            </div>
         </div>
         <table class="table">
             <thead>
@@ -36,13 +46,13 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex';
+    import { mapActions, mapGetters } from 'vuex';
 
     export default {
         name: 'index',
         data() {
             return {
-                filterField: ''
+                filterField: '',
             }
         },
         beforeMount() {
@@ -53,6 +63,9 @@
             this.$store.dispatch('getCustomers');
         },
         computed: {
+            ...mapGetters([
+                'backendSource'
+            ]),
             customers() {
                 return this.$store.getters.customers.filter((customer) => {
                     return customer.name.includes(this.filterField);
@@ -62,8 +75,9 @@
         methods: {
             // o payload vai implicitamente
             ...mapActions([
-                'deleteCustomer'
-            ])
+                'deleteCustomer',
+                'changeSourceBackend'
+            ]),
         }
     }
 </script>

@@ -8,7 +8,7 @@ export function initialize(store, router) {
 
         if(requiresAuth && !currentUser) {
             next('/login');
-        } else if(to.path == '/login' && currentUser) {
+        } else if(to.path === '/login' && currentUser) {
             next('/');
         } else {
             next();
@@ -17,7 +17,7 @@ export function initialize(store, router) {
 
     axios.interceptors.response.use(null, (error) => {
       // intercepta todos os request para verificar se há alguma requisição não autorizada
-      if (error.response.status == 401) {
+      if (error.response.status === 401) {
           store.commit('logout');
           router.push('/login');
       }
