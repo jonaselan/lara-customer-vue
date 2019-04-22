@@ -5,11 +5,13 @@
                 <p> Origem dos dados: {{ backendSource ? 'local' : 'api externa' }}</p>
                 <label for="toggle-source"> Mudar </label>
                 <input type="checkbox" id="toggle-source" @change="changeSourceBackend()"/>
-                <div class="filters" v-show="!backendSource">
-                    aksjdn
-                </div>
+                <transition name="fade">
+                    <div class="filters" v-show="!backendSource">
+                        aksjdn
+                    </div>
+                </transition>
             </div>
-            <div class="col-sm">
+            <div class="col-sm text-right">
                 <input type="text" v-model="filterField">
                 <router-link to="/customers/create" class="btn btn-primary btn-sm">Create</router-link>
             </div>
@@ -83,8 +85,10 @@
 </script>
 
 <style scoped>
-  .btn-wrapper {
-      text-align: right;
-      margin-bottom: 20px;
-  }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
 </style>

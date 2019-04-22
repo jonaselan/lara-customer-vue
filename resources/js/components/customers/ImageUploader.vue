@@ -1,7 +1,7 @@
 <template>
     <div class="uploader"
-         @dragenter="OnDragEnter"
-         @dragleave="OnDragLeave"
+         @dragenter.prevent="OnDragEnter"
+         @dragleave.prevent="OnDragLeave"
          @dragover.prevent
          @drop="onDrop"
          :class="{ dragging: isDragging }">
@@ -22,16 +22,17 @@
         </div>
 
         <div class="images-preview" v-show="images.length">
-            <div class="img-wrapper" v-for="(image, index) in images" :key="index">
-                <img :src="image" :alt="`Image Uploader ${index}`">
-                <div class="details">
-                    <button class="delete-image" @click="deleteImage(index)">X</button>
-                    <span class="name" v-text="files[index].name"></span>
-                    <span class="size" v-text="getFileSize(files[index].size)"></span>
+            <transition-group name="image" tag="div">
+                <div class="img-wrapper" v-for="(image, index) in images" :key="item + '_' + index">
+                    <img :src="image" :alt="`Image Uploader ${index}`">
+                    <div class="details">
+                        <button class="delete-image" @click.prevent="deleteImage(index)">X</button>
+                        <span class="name" v-text="files[index].name"></span>
+                        <span class="size" v-text="getFileSize(files[index].size)"></span>
+                    </div>
                 </div>
-            </div>
+            </transition-group>
         </div>
-
     </div>
 </template>
 
@@ -52,14 +53,12 @@
             },
         },
         methods: {
-            OnDragEnter(e) {
-                e.preventDefault();
+            OnDragEnter() {
                 this.draggingCount++;
 
                 this.isDragging = true;
             },
-            OnDragLeave(e){
-                e.preventDefault();
+            OnDragLeave(){
                 this.draggingCount--;
 
                 if (this.draggingCount <= 0)
@@ -138,6 +137,7 @@
         border: 3px dashed #fff;
         font-size: 20px;
         position: relative;
+
         &.dragging {
             background: #fff;
             color: #2196F3;
@@ -147,14 +147,17 @@
                 color: #fff;
             }
         }
+
         i {
             font-size: 85px;
         }
+
         .file-input {
             width: 200px;
             margin: auto;
             height: 68px;
             position: relative;
+
             label,
             input {
                 background: #fff;
@@ -168,15 +171,33 @@
                 margin-top: 7px;
                 cursor: pointer;
             }
+
             input {
                 opacity: 0;
                 z-index: -2;
             }
         }
+
+        .image-enter-active, .image-leave-active {
+            transition: all 1s;
+        }
+        .image-enter, .image-leave-to /* .list-leave-active below version 2.1.8 */ {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .image-move {
+            transition: transform 1s;
+        }
+
         .images-preview {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 20px;
+            /* estilo na div q é adicionada pleo transaction group */
+            & > div {
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 20px;
+            }
+
             .img-wrapper {
                 width: 160px;
                 display: flex;
@@ -186,10 +207,12 @@
                 justify-content: space-between;
                 background: #fff;
                 box-shadow: 5px 5px 20px #3e3737;
+
                 img {
                     max-height: 105px;
                 }
             }
+
             .details {
                 font-size: 12px;
                 background: #fff;
@@ -198,6 +221,7 @@
                 flex-direction: column;
                 align-items: self-start;
                 padding: 3px 6px;
+
                 .name {
                     overflow: hidden;
                     height: 18px;
@@ -216,6 +240,7 @@
             padding: 10px;
             padding-bottom: 4px;
             text-align: right;
+
             button, label {
                 background: #2196F3;
                 border: 2px solid #03A9F4;
@@ -224,6 +249,7 @@
                 font-size: 15px;
                 cursor: pointer;
             }
+
             label {
                 padding: 2px 5px;
                 margin-right: 10px;
@@ -237,6 +263,5 @@
             background-color: #d28989;
             border: 1px solid white;
         }
-
     }
 </style>

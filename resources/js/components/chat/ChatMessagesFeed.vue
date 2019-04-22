@@ -1,6 +1,8 @@
 <template>
     <div class="messages-feed" ref="feed">
-        <Loading v-if="isLoading"/>
+        <transition name="loading">
+            <Loading v-if="isLoading"/>
+        </transition>
         <ul v-if="selectedUser">
             <li v-for="message in messages"
                 :class="`message ${message.to === selectedUser.id ? 'sent' : 'received'}`"
@@ -57,6 +59,16 @@
         height: 100%;
         max-height: 470px;
         overflow: scroll;
+
+        .loading-enter-active {
+            transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+
+        .loading-enter {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+
         ul {
             list-style-type: none;
             padding: 5px;
