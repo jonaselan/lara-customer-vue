@@ -1,6 +1,7 @@
 import AppHome from './components/AppHome.vue';
 import Login from './components/auth/Login.vue';
-import CustomerMain from './components/Main.vue';
+
+import CustomerMain from './components/customers/MainCustomer.vue';
 import CustomerIndex from './components/customers/Index.vue';
 import CustomerCreate from './components/customers/Create.vue';
 import CustomerShow from './components/customers/Show.vue';
@@ -19,11 +20,9 @@ export const routes = [
     {
     path: '/customers',
     component: CustomerMain,
-    meta: {
-        requiresAuth: true
-    },
+    meta: { requiresAuth: true },
     // Dentro do componente principal de customer irá ser
-    // redenrizado as seguintes rotas detrno de "route-view"
+    // redenrizado as seguintes rotas dentro de "route-view"
     children: [
         {
             path: '/',

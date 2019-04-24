@@ -1,7 +1,10 @@
 <template>
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container">
-            <router-link class="navbar-brand" to="/">LaraCustomerVue</router-link>
+            <router-link class="navbar-brand" to="/">
+                LaraCustomerVue
+            </router-link>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -9,7 +12,9 @@
               <ul class="navbar-nav ml-auto">
                   <template v-if="!currentUser">
                       <li>
-                          <router-link to="/login" class="nav-link">Login</router-link>
+                          <router-link to="/login" class="nav-link">
+                              Login
+                          </router-link>
                       </li>
                       <!-- <li>
                           <router-link to="/register" class="nav-link">Register</router-link>
@@ -17,10 +22,14 @@
                   </template>
                   <template v-else>
                       <li>
-                          <router-link to="/customers/chat" class="nav-link">Chat</router-link>
+                          <router-link class="nav-link" to="/customers/chat">
+                              Chat
+                          </router-link>
                       </li>
                       <li>
-                          <router-link to="/customers" class="nav-link">Customers</router-link>
+                          <router-link class="nav-link" to="/customers">
+                              Customers
+                          </router-link>
                       </li>
                       <li class="nav-item dropdown">
                           <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -55,3 +64,9 @@
         }
     }
 </script>
+
+<style>
+    .navbar-laravel {
+        z-index: 99;
+    }
+</style>

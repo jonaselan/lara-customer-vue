@@ -7,11 +7,11 @@
                     <form @submit.prevent="authenticate">
                         <div class="form-group row">
                             <label for="email">Email:</label>
-                            <input type="email" v-model="form.email" class="form-control" placeholder="Email Address">
+                            <input type="email" id="email" v-model="form.email" class="form-control" placeholder="Email Address">
                         </div>
                         <div class="form-group row">
                             <label for="password">Password:</label>
-                            <input type="password" v-model="form.password" class="form-control" placeholder="Password">
+                            <input type="password" id="password" v-model="form.password" class="form-control" placeholder="Password">
                         </div>
                         <div class="form-group row">
                             <input type="submit" value="Login">

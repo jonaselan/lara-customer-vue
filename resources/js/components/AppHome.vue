@@ -1,19 +1,17 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Welcome</div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card card-default">
+                <div class="card-header">Welcome</div>
 
-                    <div class="card-body">
-                        <h2>{{ welcome }}</h2>
+                <div class="card-body">
+                    <h2>{{ welcome }}</h2>
 
-                        <div class="small">
-                            <line-chart :chart-data="datacollection"></line-chart>
-                            <button @click="fillData()">Randomize</button>
-                        </div>
-
+                    <div class="small">
+                        <line-chart :chart-data="datacollection"></line-chart>
+                        <button @click="fillData()">Gerar</button>
                     </div>
+
                 </div>
             </div>
         </div>

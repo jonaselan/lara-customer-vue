@@ -1,13 +1,13 @@
 export default {
     externalAllCustomers(){
-        console.log('call external')
+        console.log('call external');
         return axios.get('http://localhost:5000/api/customers')
             .then((response) => {
                 return response.data.data
             });
     },
     allCustomers(){
-        console.log('call local')
+        console.log('call local');
         return axios.get('/api/customers')
             .then((response) => {
                 return response.data;

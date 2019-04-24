@@ -1,10 +1,14 @@
 <template>
   <div id="main">
     <keep-alive>
-      <AppHeader/>
+        <AppHeader/>
     </keep-alive>
     <div class="content">
-      <router-view> </router-view>
+        <div class="container">
+            <transition name="moveInUp">
+                <router-view/>
+            </transition>
+        </div>
     </div>
   </div>
 </template>
