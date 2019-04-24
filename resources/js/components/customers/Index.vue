@@ -2,9 +2,9 @@
     <div>
         <div class="row">
             <div class="col-sm">
-                <p> Origem dos dados: {{ backendSource ? 'local' : 'api externa' }}</p>
+                <p> Origem dos dados: {{ backendSource === true ? 'local' : 'api externa' }}</p>
                 <label for="toggle-source"> Mudar </label>
-                <input type="checkbox" id="toggle-source" @change="changeSourceBackend()"/>
+                <input type="checkbox" id="toggle-source" v-bind:value="backendSource" @change="changeSourceBackend()"/>
                 <transition name="fade">
                     <div class="filters" v-show="!backendSource">
                         aksjdn
@@ -62,7 +62,7 @@
                 return;
             }
 
-            this.$store.dispatch('getCustomers');
+            this.$store.dispatch('fetchCustomers');
         },
         computed: {
             ...mapGetters([

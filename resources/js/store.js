@@ -1,6 +1,7 @@
 import { authModule } from "./store/auth/store"
 import { customerModule } from "./store/customers/store"
 import { chatModule } from "./store/chat/store"
+import api from "./api/customers";
 
 export default {
     // é uma verificação pesada. Não é recomendado fazer em prod
@@ -38,8 +39,14 @@ export default {
         changeStatusLoad({ commit }){
             commit('toggleLoad');
         },
-        changeSourceBackend({ commit }){
-            commit('toggleBackend');
+        changeSourceBackend({ commit, state }){
+            (state.sourceLocal
+                ? api.allCustomers()
+                : api.externalAllCustomers())
+                .then(data => {
+                    commit('toggleBackend');
+                    commit('fillCustomerState', data.customers)
+                })
         }
     }
 };

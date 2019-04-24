@@ -7,8 +7,11 @@ export default {
     storeImage(context, image) {
         context.commit("fillImage", image);
     },
-    getCustomers({ commit }) {
-        api.allCustomers().then(data => {
+    fetchCustomers({ commit, rootState }) {
+        (rootState.sourceLocal
+            ? api.allCustomers()
+            : api.externalAllCustomers())
+            .then(data => {
             commit('fillCustomerState', data.customers)
         })
     },
