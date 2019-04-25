@@ -12,6 +12,9 @@ import { initialize } from './helpers/general';
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
+// https://medium.com/vuejs-tips/vue-log-a7b0b5d16a0
+Vue.prototype.$log = console.log.bind(console);
+
 // definir store da aplicação
 const store = new Vuex.Store(storeData);
 
