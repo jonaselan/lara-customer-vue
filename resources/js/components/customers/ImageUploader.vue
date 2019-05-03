@@ -103,21 +103,20 @@
                 }
                 return `${(Math.round(size * 100) / 100)} ${fSExt[i]}`;
             },
-            upload(){
-                const formData = new FormData();
+            // upload(){
+            //     const formData = new FormData();
 
-                this.files.forEach(file => {
-                    formData.append('images[]', file, file.name);
-                });
+            //     this.files.forEach(file => {
+            //         formData.append('images[]', file, file.name);
+            //     });
 
-                axios.post('/images-upload', formData)
-                    .then(response => {
-                        alert('All images uplaoded successfully');
-                        this.images = [];
-                        this.files = [];
-                    })
+            //     axios.post('/images-upload', formData)
+            //         .then(response => {
+            //             this.images = [];
+            //             this.files = [];
+            //         })
 
-            },
+            // },
             deleteImage(index){
                 this.files.splice(index, 1);
                 this.images.splice(index, 1);

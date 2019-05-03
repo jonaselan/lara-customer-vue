@@ -93,14 +93,13 @@
                     formData.append('images[]', file, file.name);
                 });
 
-                axios.post('/images-upload', formData)
-                    .then(response => {
-                        alert('All images uploaded successfully');
-                        this.images = [];
-                        this.files = [];
-                    });
+                // axios.post('/images-upload', formData)
+                //     .then(response => {
+                //         this.images = [];
+                //         this.files = [];
+                //     });
 
-                axios.post('/api/customers', this.$data.customer)
+                axios.post('/api/customers', formData.concat(this.$data.customer))
                     .then((response) => {
                         this.$router.push('/customers');
                     });

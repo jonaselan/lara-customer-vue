@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Http\Requests\CustomerRequest;
+use App\Image;
 
 class CustomersController extends Controller
 {
@@ -23,7 +24,18 @@ class CustomersController extends Controller
     }
     public function store(CustomerRequest $request)
     {
+        dd($request->all());
         $customer = Customer::create($request->all());
+
+        if ($customer) {
+            if (count($request->images)) {
+                foreach ($request->images as $image) {
+                    $customer->images()->create([
+                        "url" => $image->store('public')
+                    ]);
+                }
+            }
+        }
 
         return response()
               ->json(["customer" => $customer], 200);
