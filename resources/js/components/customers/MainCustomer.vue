@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card card-default">
-                    <div class="card-header"> Customers section </div>
+                    <div class="card-header"> {{header}} </div>
                     <div class="card-body">
                         <transition name="moveInUp">
                             <router-view/>
@@ -17,7 +17,12 @@
 
 <script>
     export default {
-        name: 'customers-main'
+        name: 'customers-main',
+        data() {
+            return {
+                header: 'Customers'
+            }
+        }
     }
 </script>
 

@@ -24,6 +24,7 @@
             ])
         },
         mounted() {
+            this.headerTitle('Chat');
             // window.Echo.private(`messages.${this.currentUser.id}`)
             //     .listen('NewMessage', (e) => {
                     // e.message vem do broadcastWith, dentro do evento NewMessage

@@ -7,6 +7,7 @@ import { routes } from './routes';
 import AppMain from './components/AppMain.vue';
 import storeData from './store';
 import { initialize } from './helpers/general';
+import mixin from './helpers/helper';
 
 // dizer ao vue o que ele vai usar
 Vue.use(VueRouter);
@@ -24,6 +25,8 @@ const router = new VueRouter({
 });
 
 initialize(store, router);
+
+Vue.mixin(mixin);
 
 new Vue({
     el: '#app',
