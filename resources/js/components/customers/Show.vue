@@ -85,25 +85,8 @@
     flex: 3;
     overflow-x: scroll;
   }
-
-    /* figure {
-        display: inline-block;
-        margin: 0 0 0 0;
-        width: 100%;
-    } */
-
-    .user-images {
-        width: 100%;
-        height: auto;
-        /* max-height: 120px; */
-    }
+  .user-images {
+    width: 100%;
+    height: auto;
+  }
 </style>
-
-// <script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
-// <script>
-//     document.addEventListener('DOMContentLoaded', function () {
-//         new Zooming({
-//             // options...
-//         }).listen('.user-images')
-//     })
-// </script>
