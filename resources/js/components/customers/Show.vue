@@ -22,6 +22,19 @@
                     <th>Website</th>
                     <td>{{ customer.website }}</td>
                 </tr>
+                <tr>
+                    <th>Images</th>
+                    <td>
+                        <div v-if="customer.images" class="row">
+                            <div v-for="img in customer.images" class="col-lg-4">
+                                <img :src="'/storage/' + img.url" class="user-images" />
+                            </div>
+                        </div>
+                        <div v-else>
+                            Nenhuma imagem
+                        </div>
+                    </td>
+                </tr>
             </table>
             <router-link to="/customers">Back to all customers</router-link>
         </div>
@@ -69,7 +82,28 @@
       max-width: 160px;
   }
   .user-info {
-      flex: 3;
-      overflow-x: scroll;
+    flex: 3;
+    overflow-x: scroll;
   }
+
+    /* figure {
+        display: inline-block;
+        margin: 0 0 0 0;
+        width: 100%;
+    } */
+
+    .user-images {
+        width: 100%;
+        height: auto;
+        /* max-height: 120px; */
+    }
 </style>
+
+// <script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+// <script>
+//     document.addEventListener('DOMContentLoaded', function () {
+//         new Zooming({
+//             // options...
+//         }).listen('.user-images')
+//     })
+// </script>

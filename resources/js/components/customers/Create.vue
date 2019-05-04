@@ -93,13 +93,12 @@
                     formData.append('images[]', file, file.name);
                 });
 
-                // axios.post('/images-upload', formData)
-                //     .then(response => {
-                //         this.images = [];
-                //         this.files = [];
-                //     });
+                formData.append('email', this.$data.customer.email);
+                formData.append('name', this.$data.customer.name);
+                formData.append('phone', this.$data.customer.phone);
+                formData.append('website', this.$data.customer.website);
 
-                axios.post('/api/customers', formData.concat(this.$data.customer))
+                axios.post('/api/customers', formData)
                     .then((response) => {
                         this.$router.push('/customers');
                     });

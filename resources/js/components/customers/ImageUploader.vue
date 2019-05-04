@@ -23,7 +23,7 @@
 
         <div class="images-preview" v-show="images.length">
             <transition-group name="image" tag="div">
-                <div class="img-wrapper" v-for="(image, index) in images" :key="item + '_' + index">
+                <div class="img-wrapper" v-for="(image, index) in images" :key="'item_' + index">
                     <img :src="image" :alt="`Image Uploader ${index}`">
                     <div class="details">
                         <button class="delete-image" @click.prevent="deleteImage(index)">X</button>
